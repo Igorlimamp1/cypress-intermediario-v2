@@ -1,6 +1,8 @@
 import { faker } from '@faker-js/faker'
 
 describe('Create Project', () => {
+  beforeEach(() => cy.api_deleteProjects())
+  
   it('successfully', () => {
     const project = {
       name: `project-${faker.datatype.uuid()}`,
@@ -14,4 +16,6 @@ describe('Create Project', () => {
         expect(response.body.description).to.equal(project.description)
       })
   })
+
 })
+
